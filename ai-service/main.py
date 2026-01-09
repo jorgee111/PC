@@ -5,6 +5,7 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
+import os
 
 app = FastAPI()
 
@@ -17,9 +18,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Construimos la ruta al modelo relativa a este archivo
+MODEL_PATH = os.path.join(BASE_DIR, 'best_gradient_boosting_model.pkl')
+
+# --- 2. CARGA DEL MODELO ---
+model = None
+
+print(f"📂 Buscando modelo en: {MODEL_PATH}")
 # --- 1. CARGA DEL MODELO ---
 try:
-    modelo = joblib.load("best_gradient_boosting_model.pkl")
+    modelo = joblib.load(MODEL_PATH)
     print("✅ Modelo cargado correctamente.")
     
     if hasattr(modelo, "feature_names_in_"):

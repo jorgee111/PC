@@ -65,7 +65,7 @@ async function loadIncidents() {
 
 // FUNCION PARA ELIMINAR
 async function deleteIncident(id) {
-    // Confirmación para evitar clicks accidentales
+
     const confirmDelete = confirm("⚠️ ¿Estás seguro de que quieres eliminar esta incidencia permanentemente?");
     
     if (!confirmDelete) return;
