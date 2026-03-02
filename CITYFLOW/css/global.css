@@ -73,6 +73,18 @@ body {
     z-index: 1000;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo img {
+    height: 35px;
+    width: auto;
+    object-fit: contain;
+}
+
 .nav-links {
     display: flex;
     align-items: center;
