@@ -9,7 +9,7 @@ document.getElementById("register-form").addEventListener("submit", async (event
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
     const messageBox = document.getElementById("response-message");
-    const submitButton = document.querySelector(".btn-register-blue");
+    const submitButton = document.querySelector(".btn-primary");
 
     messageBox.textContent = "";
 
