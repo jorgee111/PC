@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     const form = document.getElementById('trafficForm');
     const resultArea = document.getElementById('resultArea');
     const predictionText = document.getElementById('predictionText');
@@ -42,17 +42,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Asignar clases de color según la severidad (Usando tus variables CSS)
             predictionText.className = "status"; // Reset
-            
+
             // Lógica simple de colores basada en tu dashboard
             if (data.clase === 0) {
                 predictionText.classList.add('active'); // Verde
-                predictionText.style.color = "var(--success-color)";
+                predictionText.style.color = "var(--success)";
             } else if (data.clase === 1) {
                 predictionText.classList.add('warning'); // Amarillo/Naranja
-                predictionText.style.color = "var(--warning-color)";
+                predictionText.style.color = "var(--warning)";
             } else {
                 predictionText.classList.add('alert'); // Rojo
-                predictionText.style.color = "var(--danger-color)";
+                predictionText.style.color = "var(--danger)";
             }
 
             // Scroll suave hacia el resultado

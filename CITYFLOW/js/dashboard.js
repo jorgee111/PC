@@ -68,18 +68,18 @@ function renderLines(linesToRender) {
 
         // Creamos el HTML
         const cardHTML = `
-            <article class="card">
+            <article class="card glass-panel">
                 <section class="card-header">
                     <span class="line-badge">L-${line.id}</span>
                     <span class="status ${statusClass}">${statusText}</span>
                 </section>
                 <section class="card-body">
-                    <h3>${line.name}</h3>
-                    <p><strong>Zona:</strong> ${line.zone}</p>
-                    <p><strong>Ocupación:</strong> ${line.occupation}%</p>
+                    <h3 style="color: var(--text-main); margin-bottom: 10px;">${line.name}</h3>
+                    <p style="color: var(--text-muted);"><strong>Zona:</strong> ${line.zone}</p>
+                    <p style="color: var(--text-muted);"><strong>Ocupación:</strong> ${line.occupation}%</p>
                 </section>
                 <section class="card-footer">
-                    <a href="line-detail.html?id=${line.id}" class="btn-detail">Ver Detalles</a>
+                    <a href="line-detail.html?id=${line.id}" class="btn btn-detail">Ver Detalles</a>
                 </section>
             </article>
         `;

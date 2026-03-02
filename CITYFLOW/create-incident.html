@@ -5,32 +5,30 @@
     <title>Nueva Incidencia - CityFlow</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/create-incident.css">
+    <link rel="icon" href="img/favicon.ico">
 </head>
 <body>
 
     <header>
-        <nav class="navbar">
-        <h2>CityFlow</h2>
-        <div class="nav-links">
-            <a href="line-detail.html">Cancelar</a>
-        </div>
-    </nav>
-
-
+        <nav class="navbar glass-panel" style="border-radius: 0; border-top: none; border-left: none; border-right: none;">
+            <a href="dashboard.html" class="logo">CityFlow</a>
+            <div class="nav-links">
+                <a href="line-detail.html" class="accent-link">← Cancelar</a>
+            </div>
+        </nav>
     </header>
     
-
     <main class="form-wrapper">
-        <article class="form-card">
-            <h2>Reportar Incidencia</h2>
+        <article class="form-card glass-panel">
+            <h2 style="color: var(--text-main); margin-bottom: 20px;">Reportar Incidencia</h2>
             <div class="context-info">
-                Sobre: <strong id="line-context">Cargando...</strong>
+                Sobre: <strong id="line-context" style="color: var(--text-main);">Cargando...</strong>
             </div>
 
             <form id="incident-form">
                 <section class="form-group">
                     <label>Tipo de Problema</label>
-                    <select id="type" required>
+                    <select id="type" required class="filter-select" style="width: 100%;">
                         <option value="">Selecciona...</option>
                         <option value="Avería Motor">Avería Mecánica</option>
                         <option value="Accidente">Accidente</option>
@@ -45,23 +43,23 @@
                 </section>
 
                 <section class="checkbox-group">
-                    <label>
-                        <input type="checkbox" id="assistance"> Solicitar Asistencia Técnica
+                    <label style="color: var(--text-muted); display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                        <input type="checkbox" id="assistance" style="width: 18px; height: 18px; accent-color: var(--primary);">
+                        Solicitar Asistencia Técnica
                     </label>
                 </section>
 
-                <button type="submit" class="btn btn-submit">Enviar Reporte</button>
+                <button type="submit" class="btn btn-primary btn-submit">Enviar Reporte</button>
             </form>
         </article>
     </main>
 
-<footer class="main-footer">
-    <section class="footer-content">
-        <p>&copy; 2024 CityFlow - Gestión de Movilidad Urbana</p>
-       
-    </section>
-</footer>
+    <footer class="main-footer">
+        <section class="footer-content">
+            <p>&copy; 2026 CityFlow - Gestión de Movilidad Urbana</p>
+        </section>
+    </footer>
 
-<script src="js/create-incident.js"></script>
+    <script src="js/create-incident.js"></script>
 </body>
 </html>

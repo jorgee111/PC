@@ -1,14 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
 /* global.css */
 :root {
-    --primary: #004e92;      /* Azul CityFlow */
-    --secondary: #000428;    /* Azul Oscuro */
-    --accent: #ff9966;       /* Naranja para acciones */
-    --danger: #d9534f;
-    --success: #5cb85c;
-    --bg-light: #f4f7f6;
-    --text-dark: #333;
-    --white: #ffffff;
-    --shadow: 0 4px 6px rgba(0,0,0,0.1);
+    --primary: #00f2fe;
+    /* Electric Blue */
+    --primary-glow: rgba(0, 242, 254, 0.4);
+    --secondary: #4facfe;
+    /* Bright Blue */
+    --accent: #b3ffab;
+    /* Neon Greenish accent */
+    --danger: #ff4b4b;
+    --success: #00e676;
+    --warning: #fbbf24;
+
+    --bg-dark: #0f172a;
+    /* Deep Slate background */
+    --bg-darker: #020617;
+    --surface-glass: rgba(30, 41, 59, 0.6);
+    --surface-glass-hover: rgba(30, 41, 59, 0.8);
+    --surface-border: rgba(255, 255, 255, 0.08);
+
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+
+    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --transition-fast: 0.2s ease;
+    --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -18,53 +35,157 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-light);
-    color: var(--text-dark);
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-dark);
+    background-image:
+        radial-gradient(at 0% 0%, rgba(79, 172, 254, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(179, 255, 171, 0.1) 0px, transparent 50%);
+    background-attachment: fixed;
+    color: var(--text-main);
     line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+    background: var(--surface-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--surface-border);
+    border-radius: 16px;
+    box-shadow: var(--shadow-glass);
 }
 
 /* Navegación común */
 .navbar {
-    background: linear-gradient(to right, var(--secondary), var(--primary));
+    background: rgba(2, 6, 23, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--white);
-    box-shadow: var(--shadow);
+    border-bottom: 1px solid var(--surface-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
 }
 
 .nav-links a {
-    color: var(--white);
+    color: var(--text-main);
     text-decoration: none;
     margin-left: 20px;
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    transition: var(--transition-fast);
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    transition: width var(--transition-fast);
+    border-radius: 2px;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 .btn {
-    padding: 10px 20px;
+    padding: 10px 24px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
     text-decoration: none;
-    display: inline-block;
-    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+    letter-spacing: 0.5px;
+    font-size: 0.95rem;
 }
 
+.btn-primary,
+.btn-login-blue {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #020617;
+    /* Dark text for contrast against bright blue */
+    box-shadow: 0 4px 15px var(--primary-glow);
+}
 
-/* --- AÑADIR AL FINAL DE global.css --- */
+.btn-primary:hover,
+.btn-login-blue:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.6);
+}
+
+.btn-secondary {
+    background: var(--surface-glass);
+    border: 1px solid var(--surface-border);
+    color: var(--text-main);
+}
+
+.btn-secondary:hover {
+    background: var(--surface-glass-hover);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-darker);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+/* Formularios Generales */
+input,
+select,
+textarea {
+    font-family: 'Outfit', sans-serif;
+}
 
 /* Footer Global */
 .main-footer {
-    background-color: var(--secondary); /* El azul oscuro corporativo */
-    color: var(--white);
+    background: rgba(2, 6, 23, 0.8);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--surface-border);
     padding: 1.5rem 0;
-    margin-top: auto; /* IMPORTANTE: Esto empuja el footer al fondo */
+    margin-top: auto;
     font-size: 0.9rem;
-    border-top: 4px solid var(--accent); /* Un toque de color naranja */
+    color: var(--text-muted);
 }
 
 .footer-content {
@@ -74,28 +195,43 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Para móviles */
+    flex-wrap: wrap;
 }
 
 .footer-links a {
-    color: #bbb;
+    color: var(--text-muted);
     text-decoration: none;
     margin-left: 20px;
-    transition: color 0.3s;
+    transition: color var(--transition-fast);
 }
 
 .footer-links a:hover {
-    color: var(--accent); /* Naranja al pasar el ratón */
-    text-decoration: underline;
+    color: var(--primary);
 }
 
-/* Ajuste para móviles */
 @media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        margin-top: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .nav-links a {
+        margin: 0 10px;
+    }
+
     .footer-content {
         flex-direction: column;
         text-align: center;
-        gap: 10px;
+        gap: 15px;
     }
+
     .footer-links a {
         margin: 0 10px;
     }

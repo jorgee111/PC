@@ -1,122 +1,131 @@
-/* Reset básico */
-* {
-    box-sizing: border-box;
-}
+/* Auth Specific Styles (Login & Register) */
 
-body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    /* Fondo degradado azul */
-    background: linear-gradient(135deg, #eef2f7 0%, #cddcec 100%);
+/* The background is handled by global.css, but we can center the auth box here */
+.login-container {
+    width: 100%;
+    max-width: 420px;
+    margin: auto;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    margin: 0;
-    padding: 20px;
-}
-
-.login-container {
-    width: 100%;
-    max-width: 400px;
 }
 
 .login-card {
-    background: #ffffff;
-    padding: 2.5rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 86, 179, 0.15);
+    padding: 3rem 2.5rem;
     text-align: center;
-    border-top: 5px solid #0056b3;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Estilos del Logo */
+/* Subtle glow effect behind the card */
+.login-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.1) 0%, transparent 60%);
+    z-index: -1;
+    pointer-events: none;
+}
+
 .logo-container {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     display: flex;
     justify-content: center;
 }
 
 .cityflow-logo {
-    width: 180px;
+    width: 160px;
     height: auto;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.3));
+    transition: transform var(--transition-smooth);
+}
+
+.cityflow-logo:hover {
+    transform: scale(1.05);
 }
 
 h2 {
-    color: #003366;
+    color: var(--text-main);
     margin-bottom: 0.5rem;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
 .subtitle {
-    color: #6c757d;
+    color: var(--text-muted);
     margin-bottom: 2rem;
+    font-size: 1rem;
 }
 
 .input-group {
     margin-bottom: 1.5rem;
     text-align: left;
+    position: relative;
 }
 
 .input-group label {
     display: block;
     margin-bottom: 0.5rem;
-    color: #004494;
-    font-weight: 600;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color var(--transition-fast);
+}
+
+.input-group:focus-within label {
+    color: var(--primary);
 }
 
 .input-group input {
     width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #e1e5eb;
+    padding: 14px 16px;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid var(--surface-border);
     border-radius: 8px;
+    color: var(--text-main);
     font-size: 1rem;
-    transition: border-color 0.3s;
+    transition: all var(--transition-fast);
+}
+
+.input-group input::placeholder {
+    color: rgba(148, 163, 184, 0.5);
 }
 
 .input-group input:focus {
     outline: none;
-    border-color: #0056b3;
+    border-color: var(--primary);
+    background: rgba(15, 23, 42, 0.8);
+    box-shadow: 0 0 0 3px rgba(0, 242, 254, 0.15);
 }
 
-/* BOTÓN DE LOGIN AZUL */
-.btn-login-blue {
-    width: 100%;
-    padding: 14px;
-    background-color: #0056b3;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.btn-login-blue:hover {
-    background-color: #004494;
-}
-
-/* Enlace a Registro */
 .register-link-container {
     margin-top: 1.5rem;
     font-size: 0.95rem;
-    color: #666;
+    color: var(--text-muted);
 }
 
-.blue-link {
-    color: #0056b3;
+.accent-link {
+    color: var(--primary);
     text-decoration: none;
     font-weight: 600;
+    transition: color var(--transition-fast);
 }
 
-.blue-link:hover {
-    text-decoration: underline;
+.accent-link:hover {
+    color: #fff;
+    text-shadow: 0 0 8px var(--primary-glow);
 }
 
-/* Mensaje de error */
 .message-box {
     margin-top: 1rem;
-    font-weight: bold;
+    font-weight: 500;
     min-height: 20px;
-    color: #721c24;
+    color: var(--warning);
+    font-size: 0.9rem;
 }

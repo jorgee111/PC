@@ -30,7 +30,7 @@ async function fetchLineData(id) {
 
 function updateUI(line) {
     // Actualizar Cabecera
-    
+
     document.querySelector('.detail-header h1').textContent = `${line.name} (${line.zone})`;
 
     // Actualizar Badge de Estado y Color
@@ -51,9 +51,9 @@ function updateUI(line) {
 
     // Actualizar Estadísticas (Ocupación, Temperatura, Motor)
     const statsValues = document.querySelectorAll('.stat-box h3');
-    if(statsValues.length >= 3) {
+    if (statsValues.length >= 3) {
         statsValues[0].textContent = line.stats.occupancy;
-        statsValues[1].textContent = line.stats.temp; 
+        statsValues[1].textContent = line.stats.temp;
         statsValues[2].textContent = line.stats.motor;
     }
 
@@ -68,7 +68,7 @@ function updateUI(line) {
         tbody.appendChild(row);
     });
 
-    const reportBtn = document.querySelector('.btn-report');
+    const reportBtn = document.querySelector('.btn-danger-glow');
     if (reportBtn) {
         // encodeURIComponent es vital para que los espacios y acentos no rompan la URL
         reportBtn.href = `create-incident.html?lineName=${encodeURIComponent(line.name)}`;

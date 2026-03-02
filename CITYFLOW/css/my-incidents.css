@@ -1,174 +1,138 @@
-/* --- CONFIGURACIÓN PRINCIPAL DEL BODY (Sticky Footer) --- */
-body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f7f6;
-    
-    /* ESTAS 3 LÍNEAS SON OBLIGATORIAS PARA EL FOOTER */
-    display: flex;             
-    flex-direction: column;    
-    min-height: 100vh;         /* Obliga al body a medir al menos el alto de la pantalla */
-}
+/* --- my-incidents.css --- */
+/* Global layout logic is handled in global.css */
 
-/* --- BARRA DE NAVEGACIÓN (Navbar) --- */
-.navbar {
-    background-color: var(--primary-color);
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    /* IMPORTANTE: Permite que los elementos bajen de línea en móvil */
-    flex-wrap: wrap; 
-}
-
-.navbar h2 {
-    color: white;
-    margin: 0;
-    font-size: 1.5rem;
-}
-
-/* Contenedor de enlaces (Desktop) */
-.nav-links {
-    display: flex; /* Alinea los enlaces en fila horizontalmente */
-}
-
-.nav-links a {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    color: white;
-}
-
-/* --- CONTENEDOR PRINCIPAL QUE EMPUJA EL FOOTER --- */
-.history-wrapper { 
-    max-width: 1000px; 
-    margin: 2rem auto; 
+.history-wrapper {
+    max-width: 1000px;
+    margin: 2rem auto;
     padding: 0 20px;
     width: 100%;
-    
-    /* ESTA ES LA LÍNEA MÁGICA */
-    flex: 1;  /* Le dice al main: "Crece todo lo que puedas para ocupar el hueco vacío" */
+    flex: 1;
 }
 
-/* --- ESTILOS DE LA TABLA --- */
+.page-header {
+    background: var(--surface-glass);
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--surface-border);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-glass);
+}
+
+.table-container {
+    overflow-x: auto;
+    padding: 1px;
+}
+
 .history-table {
     width: 100%;
-    border-collapse: collapse;
-    background: white;
-    margin-top: 1rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    border-radius: 8px; /* Un toque estético extra */
-    overflow: hidden;   /* Para que el borde redondeado funcione en las esquinas */
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 600px;
 }
 
 .history-table th {
-    background-color: #004e92; /* Usamos el color directo por si falla la variable global */
-    color: white;
-    padding: 15px;
+    background: rgba(15, 23, 42, 0.8);
+    color: var(--text-main);
+    padding: 16px 20px;
     text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid var(--surface-border);
+}
+
+.history-table th:first-child {
+    border-top-left-radius: 16px;
+}
+
+.history-table th:last-child {
+    border-top-right-radius: 16px;
 }
 
 .history-table td {
-    padding: 15px;
-    border-bottom: 1px solid #eee;
-    color: #333;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--surface-border);
+    vertical-align: middle;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    background: rgba(30, 41, 59, 0.3);
+    transition: background var(--transition-fast);
 }
 
-.history-table tr:hover { 
-    background-color: #f1f1f1; 
+.history-table tr:hover td {
+    background: rgba(30, 41, 59, 0.6);
 }
+
+.history-table tr:last-child td {
+    border-bottom: none;
+}
+
+.history-table tr:last-child td:first-child {
+    border-bottom-left-radius: 16px;
+}
+
+.history-table tr:last-child td:last-child {
+    border-bottom-right-radius: 16px;
+}
+
 
 /* --- BADGES / ETIQUETAS DE ESTADO --- */
 .status-tag {
-    padding: 5px 12px;
+    padding: 6px 14px;
     border-radius: 20px;
     font-size: 0.85rem;
-    font-weight: bold;
+    font-weight: 700;
     display: inline-block;
 }
 
-.status-tag.pending { 
-    background-color: #ffc107; 
-    color: #856404; 
+.status-tag.pending {
+    background: rgba(251, 191, 36, 0.1);
+    color: var(--warning);
+    border: 1px solid var(--warning);
 }
 
-.status-tag.solved { 
-    background-color: #28a745; 
-    color: white; 
+.status-tag.solved {
+    background: rgba(0, 230, 118, 0.1);
+    color: var(--success);
+    border: 1px solid var(--success);
 }
 
-/* --- ESTILOS DEL FOOTER (Por si global.css falla) --- */
-.main-footer {
-    background-color: #000428;
-    color: white;
-    padding: 1.5rem 0;
-    margin-top: auto; /* Refuerzo extra de seguridad */
-    width: 100%;
-}
-
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    text-align: center;
-}
-
-.footer-links a {
-    color: #ccc;
-    margin: 0 10px;
-    text-decoration: none;
-}
-
-/* --- MENÚ RESPONSIVE (Lógica del Checkbox) --- */
-
-/* Elementos ocultos en Desktop */
+/* --- MENÚ RESPONSIVE --- */
 #menu-toggle {
     display: none;
 }
 
 .menu-icon {
     display: none;
-    font-size: 1.8rem; /* Un poco más grande para mejor click */
-    color: white;
+    font-size: 1.8rem;
+    color: var(--text-main);
     cursor: pointer;
     user-select: none;
 }
 
-/* Media Query para Tablets y Móviles (768px es el estándar) */
-@media (max-width: 685px) {
-    
-    /* 1. Icono visible */
+@media (max-width: 768px) {
     .menu-icon {
         display: block;
+        position: absolute;
+        right: 20px;
+        top: 15px;
     }
 
-    /* 2. Menú oculto por defecto y estilizado para móvil */
     .nav-links {
-        display: none; /* Se oculta */
-        width: 100%;   /* Ocupa todo el ancho */
-        flex-direction: column; /* Vertical */
+        display: none;
+        width: 100%;
+        flex-direction: column;
         text-align: center;
         margin-top: 15px;
         padding-top: 10px;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        border-top: 1px solid var(--surface-border);
     }
 
     .nav-links a {
         display: block;
         margin: 10px 0;
-        margin-left: 0;
     }
 
-    /* 3. Lógica de activación: Si el checkbox está 'checked', muestra el hermano 'nav-links' */
-    #menu-toggle:checked ~ .nav-links {
+    #menu-toggle:checked~.nav-links {
         display: flex;
     }
 }

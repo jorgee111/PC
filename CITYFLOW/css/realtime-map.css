@@ -1,78 +1,48 @@
-/* 1. OBLIGATORIO: El html y body deben medir el 100% de la pantalla */
-html, body {
+/* realtime-map.css specific styles */
+/* Navbar, footer and global resets handled by global.css */
+
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Outfit', sans-serif;
     display: flex;
     flex-direction: column;
 }
-:root {
-    --primary-color: #0056b3; /* O el azul oscuro de tu imagen */
+
+header,
+.main-footer {
+    flex-shrink: 0;
 }
 
-/* --- BARRA DE NAVEGACIÓN (Navbar) --- */
-.navbar {
-    background-color: var(--primary-color);
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    /* IMPORTANTE: Permite que los elementos bajen de línea en móvil */
-    flex-wrap: wrap; 
-}
-
-.navbar h2 {
-    color: white;
-    margin: 0;
-    font-size: 1.5rem;
-}
-
-/* Contenedor de enlaces (Desktop) */
-.nav-links {
-    display: flex; /* Alinea los enlaces en fila horizontalmente */
-}
-
-.nav-links a {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    color: white;
-}
-
-/* 2. El header no crece, se queda fijo */
-header, .main-footer {
-    flex-shrink: 0; 
-}
-
-/* 3. El wrapper ocupa todo el espacio sobrante */
 .map-wrapper {
-    flex: 1; 
+    flex: 1;
     display: flex;
     flex-direction: column;
     position: relative;
-    height: 100%; /* Refuerzo */
+    height: 100%;
 }
 
 .map-header {
-    background: white;
+    background: rgba(15, 23, 42, 0.85);
     padding: 15px 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    z-index: 1000; /* Z-index alto para estar encima del mapa */
+    z-index: 1000;
     position: relative;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--surface-border);
+}
+
+.map-header h1 {
+    color: var(--text-main);
+    font-size: 1.5rem;
+    margin-bottom: 5px;
 }
 
 .indicators {
     margin-top: 5px;
-    font-size: 0.9rem;
-    color: #666;
+    font-size: 0.95rem;
+    color: var(--text-muted);
 }
 
 .dot {
@@ -81,62 +51,86 @@ header, .main-footer {
     border-radius: 50%;
     display: inline-block;
     margin-left: 10px;
+    box-shadow: 0 0 8px currentColor;
 }
-.green { background-color: #2ecc71; }
-.yellow { background-color: #f1c40f; }
-.red { background-color: #e74c3c; }
 
-/* 4. EL MAPA: Le damos altura mínima por si falla el flex */
+.green {
+    background-color: var(--success);
+    color: var(--success);
+}
+
+.yellow {
+    background-color: var(--warning);
+    color: var(--warning);
+}
+
+.red {
+    background-color: var(--danger);
+    color: var(--danger);
+}
+
 #map {
     flex: 1;
     width: 100%;
-    min-height: 500px; /* <--- ESTO ES EL TRUCO DE SEGURIDAD */
-    background: #e5e5e5;
+    min-height: 500px;
+    background: var(--bg-dark);
+    /* fallback */
     z-index: 1;
 }
 
-/* --- MENÚ RESPONSIVE (Lógica del Checkbox) --- */
+/* Fix leaflet popup for dark mode */
+.leaflet-popup-content-wrapper {
+    background: rgba(15, 23, 42, 0.9);
+    color: var(--text-main);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--surface-border);
+    border-radius: 8px;
+}
 
-/* Elementos ocultos en Desktop */
+.leaflet-popup-tip {
+    background: rgba(15, 23, 42, 0.9);
+}
+
+.leaflet-popup-content b {
+    color: var(--primary);
+}
+
 #menu-toggle {
     display: none;
 }
 
 .menu-icon {
     display: none;
-    font-size: 1.8rem; /* Un poco más grande para mejor click */
-    color: white;
+    font-size: 1.8rem;
+    color: var(--text-main);
     cursor: pointer;
     user-select: none;
 }
 
-/* Media Query para Tablets y Móviles (768px es el estándar) */
-@media (max-width: 685px) {
-    
-    /* 1. Icono visible */
+@media (max-width: 768px) {
     .menu-icon {
         display: block;
+        position: absolute;
+        right: 20px;
+        top: 15px;
     }
 
-    /* 2. Menú oculto por defecto y estilizado para móvil */
     .nav-links {
-        display: none; /* Se oculta */
-        width: 100%;   /* Ocupa todo el ancho */
-        flex-direction: column; /* Vertical */
+        display: none;
+        width: 100%;
+        flex-direction: column;
         text-align: center;
         margin-top: 15px;
         padding-top: 10px;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        border-top: 1px solid var(--surface-border);
     }
 
     .nav-links a {
         display: block;
         margin: 10px 0;
-        margin-left: 0;
     }
 
-    /* 3. Lógica de activación: Si el checkbox está 'checked', muestra el hermano 'nav-links' */
-    #menu-toggle:checked ~ .nav-links {
+    #menu-toggle:checked~.nav-links {
         display: flex;
     }
 }

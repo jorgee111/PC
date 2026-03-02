@@ -1,54 +1,78 @@
-
-body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    background-color: #f4f7f6;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
+/* --- create-incident.css --- */
+/* Layout structure handled by global.css */
 
 .form-wrapper {
-    /* Ajustamos para que crezca y centre */
     display: flex;
     justify-content: center;
-    padding-top: 3rem;
-    padding-bottom: 3rem; /* Un poco de aire abajo */
+    align-items: center;
+    padding: 3rem 20px;
     width: 100%;
-    flex: 1; /* ESTO EMPUJA EL FOOTER ABAJO */
+    flex: 1;
+    box-sizing: border-box;
 }
+
 .form-card {
-    background: var(--white);
     width: 100%;
     max-width: 600px;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
+    padding: 2.5rem;
 }
 
 .context-info {
-    background-color: #fff3cd;
-    color: #856404;
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    border-left: 5px solid #ffc107;
+    background: rgba(251, 191, 36, 0.1);
+    color: var(--warning);
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border-left: 4px solid var(--warning);
+    font-size: 1.05rem;
+    border-top: 1px solid var(--surface-border);
+    border-right: 1px solid var(--surface-border);
+    border-bottom: 1px solid var(--surface-border);
 }
 
-.form-group { margin-bottom: 1.5rem; }
-.form-group label { display: block; margin-bottom: 8px; font-weight: bold; }
-.form-group select, .form-group textarea {
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.form-group textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 12px 15px;
+    border: 1px solid var(--surface-border);
+    border-radius: 8px;
     font-family: inherit;
+    background: rgba(15, 23, 42, 0.6);
+    color: var(--text-main);
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: all var(--transition-fast);
+}
+
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0, 198, 255, 0.2);
+    background: rgba(15, 23, 42, 0.8);
+}
+
+.form-group textarea::placeholder {
+    color: rgba(148, 163, 184, 0.5);
+}
+
+.checkbox-group {
+    margin-bottom: 2rem;
+    margin-top: 1rem;
 }
 
 .btn-submit {
     width: 100%;
-    background-color: var(--primary);
-    color: white;
+    padding: 14px;
     font-size: 1.1rem;
+    font-weight: 600;
 }
-.btn-submit:hover { background-color: var(--success); }

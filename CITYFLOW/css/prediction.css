@@ -1,46 +1,10 @@
 /* CITYFLOW/css/prediction.css */
 
-/* Contenedor central más estrecho para el formulario */
 .prediction-container {
     max-width: 800px;
     margin: 0 auto;
 }
 
-/* --- BARRA DE NAVEGACIÓN (Navbar) --- */
-.navbar {
-    background-color: var(--primary-color);
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    /* IMPORTANTE: Permite que los elementos bajen de línea en móvil */
-    flex-wrap: wrap; 
-}
-
-.navbar h2 {
-    color: white;
-    margin: 0;
-    font-size: 1.5rem;
-}
-
-/* Contenedor de enlaces (Desktop) */
-.nav-links {
-    display: flex; /* Alinea los enlaces en fila horizontalmente */
-}
-
-.nav-links a {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    color: white;
-}
 /* Grid para los inputs del formulario */
 .form-grid {
     display: grid;
@@ -53,19 +17,18 @@
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
-    color: var(--text-color);
+    color: var(--text-muted);
 }
 
-/* Reutilizamos estilo .filter-select pero aseguramos que ocupe todo el ancho */
 .full-width {
     width: 100%;
-    box-sizing: border-box; /* Importante para que el padding no rompa el grid */
-    background-color: #f9f9f9;
+    box-sizing: border-box;
+    /* Importante para que el padding no rompa el grid */
 }
 
 .form-actions {
     text-align: center;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--surface-border);
     padding-top: 20px;
 }
 
@@ -75,67 +38,23 @@
     padding: 30px;
 }
 
-.result-body h2 {
-    font-size: 2.5rem;
-    margin: 10px 0 0 0;
-}
-
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 /* Animación simple de aparición */
 @keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .card:not(.hidden) {
     animation: slideUp 0.3s ease-out;
-}
-
-/* --- MENÚ RESPONSIVE (Lógica del Checkbox) --- */
-
-/* Elementos ocultos en Desktop */
-#menu-toggle {
-    display: none;
-}
-
-.menu-icon {
-    display: none;
-    font-size: 1.8rem; /* Un poco más grande para mejor click */
-    color: white;
-    cursor: pointer;
-    user-select: none;
-}
-
-/* Media Query para Tablets y Móviles (768px es el estándar) */
-@media (max-width: 685px) {
-    
-    /* 1. Icono visible */
-    .menu-icon {
-        display: block;
-    }
-
-    /* 2. Menú oculto por defecto y estilizado para móvil */
-    .nav-links {
-        display: none; /* Se oculta */
-        width: 100%;   /* Ocupa todo el ancho */
-        flex-direction: column; /* Vertical */
-        text-align: center;
-        margin-top: 15px;
-        padding-top: 10px;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .nav-links a {
-        display: block;
-        margin: 10px 0;
-        margin-left: 0;
-    }
-
-    /* 3. Lógica de activación: Si el checkbox está 'checked', muestra el hermano 'nav-links' */
-    #menu-toggle:checked ~ .nav-links {
-        display: flex;
-    }
 }

@@ -13,16 +13,16 @@
 <body>
 
     <header>
-        <nav class="navbar">
-            <h2>CityFlow</h2>
+        <nav class="navbar glass-panel" style="border-radius: 0; border-top: none; border-left: none; border-right: none;">
+            <a href="dashboard.html" class="logo">CityFlow</a>
             <label for="menu-toggle" class="menu-icon">☰</label>
             <input id="menu-toggle" type="checkbox">
             <div class="nav-links">
                 <a href="realtime-map.html">Mapa en Tiempo Real</a>
-                 <a href="prediction.html" class="active">Predicción IA</a> 
+                <a href="prediction.html" class="active">Predicción IA</a> 
                 <a href="dashboard.html">Líneas</a>
                 <a href="my-incidents.html">Mis Incidencias</a>
-                <a href="index.html" id="logout-btn">Salir</a>
+                <a href="index.html" id="logout-btn" class="accent-link">Salir</a>
             </div>
         </nav>
     </header>
@@ -31,14 +31,14 @@
         
         <section class="page-header">
             <h1>Simulador de Tráfico (IA)</h1>
-            <p style="color: var(--secondary-color);">Introduce las variables climatológicas y temporales.</p>
+            <p style="color: var(--text-muted);">Introduce las variables climatológicas y temporales.</p>
         </section>
 
         <article class="prediction-container">
-            <section class="card">
+            <section class="card glass-panel">
                 <div class="card-header">
-                    <h3>Parámetros de Entrada</h3>
-                    <span class="line-badge" style="background-color: var(--secondary-color);">Modelo v1.0</span>
+                    <h3 style="color: var(--text-main); margin: 0;">Parámetros de Entrada</h3>
+                    <span class="line-badge" style="background: linear-gradient(135deg, var(--accent), var(--success)); color: #020617;">Modelo v1.0</span>
                 </div>
 
                 <div class="card-body">
@@ -80,19 +80,19 @@
                         </div>
 
                         <div class="form-actions">
-                            <button type="submit" id="btnPredict" class="btn-detail">Calcular Predicción</button>
+                            <button type="submit" id="btnPredict" class="btn btn-primary">Calcular Predicción</button>
                         </div>
                     </form>
                 </div>
             </section>
 
-            <div id="resultArea" class="card hidden" style="margin-top: 2rem;">
+            <div id="resultArea" class="card glass-panel hidden" style="margin-top: 2rem;">
                 <div class="card-header">
-                    <h3>Resultado del Análisis</h3>
+                    <h3 style="color: var(--text-main); margin: 0;">Resultado del Análisis</h3>
                 </div>
                 <div class="card-body result-body">
-                    <p>Nivel de congestión estimado:</p>
-                    <h2 id="predictionText" class="status">--</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem;">Nivel de congestión estimado:</p>
+                    <h2 id="predictionText" class="status" style="justify-content: center; font-size: 2.5rem; margin-top: 15px;">--</h2>
                 </div>
             </div>
         </article>
@@ -101,8 +101,7 @@
 
     <footer class="main-footer">
         <article class="footer-content">
-            <p>&copy; 2025 CityFlow - Gestión de Movilidad Urbana</p>
-            
+            <p>&copy; 2026 CityFlow - Gestión de Movilidad Urbana</p>
         </article>
     </footer>
 

@@ -5,29 +5,31 @@
     <title>Historial - CityFlow</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/my-incidents.css">
+    <link rel="icon" href="img/favicon.ico">
 </head>
 <body>
 
     <header>
-        <nav class="navbar">
-        <h2>CityFlow</h2>
-        <label for="menu-toggle" class="menu-icon">☰</label>
-        <input id="menu-toggle" type="checkbox">
-        <section class="nav-links">
-            <a href="realtime-map.html">Mapa en Tiempo Real</a>
-            <a href="prediction.html" class="active">Predicción IA</a> 
-            <a href="dashboard.html">Líneas</a>
-            <a href="my-incidents.html">Mis Incidencias</a>
-            <a href="index.html" id="logout-btn">Salir</a>
-        </section>
-    </nav>
-
+        <nav class="navbar glass-panel" style="border-radius: 0; border-top: none; border-left: none; border-right: none;">
+            <a href="dashboard.html" class="logo">CityFlow</a>
+            <label for="menu-toggle" class="menu-icon">☰</label>
+            <input id="menu-toggle" type="checkbox">
+            <section class="nav-links">
+                <a href="realtime-map.html">Mapa en Tiempo Real</a>
+                <a href="prediction.html">Predicción IA</a> 
+                <a href="dashboard.html">Líneas</a>
+                <a href="my-incidents.html" class="active">Mis Incidencias</a>
+                <a href="index.html" id="logout-btn" class="accent-link">Salir</a>
+            </section>
+        </nav>
     </header>
     
     <main class="history-wrapper">
-        <h1>Mis Reportes Enviados</h1>
+        <div class="page-header glass-panel">
+            <h1 style="color: var(--text-main); margin: 0;">Mis Reportes Enviados</h1>
+        </div>
         
-        <section class="table-responsive">
+        <section class="table-container glass-panel" style="margin-top: 2rem;">
             <table class="history-table">
                 <thead>
                     <tr>
@@ -39,16 +41,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    </tbody>
+                </tbody>
             </table>
         </section>
     </main>
 
     <footer class="main-footer">
-    <section class="footer-content">
-        <p>&copy; 2024 CityFlow - Gestión de Movilidad Urbana</p>
-      
-    </section>
+        <section class="footer-content">
+            <p>&copy; 2026 CityFlow - Gestión de Movilidad Urbana</p>
+        </section>
     </footer>
 
     <script src="js/my-incidents.js"></script>
