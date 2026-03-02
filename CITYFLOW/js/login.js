@@ -1,8 +1,8 @@
-const API_URL = "http://localhost:4000/api/users";
+const API_URL = "https://cityflow2.vercel.app/api/users";
 
 // Escuchamos el evento 'submit' del formulario, no el click del botón
 document.getElementById("login-form").addEventListener("submit", async (event) => {
-    
+
     event.preventDefault(); // Evita que la página se recargue
 
     const usernameInput = document.getElementById("username");
@@ -31,7 +31,7 @@ document.getElementById("login-form").addEventListener("submit", async (event) =
             password: password
         };
 
-        const response = await fetch(API_URL, {  
+        const response = await fetch(API_URL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -44,7 +44,7 @@ document.getElementById("login-form").addEventListener("submit", async (event) =
         if (response.ok) {
             // LOGIN CORRECTO
             console.log("Login exitoso:", data);
-            
+
             // Guardamos datos en el navegador
             localStorage.setItem("usuario_actual", data.username);
             localStorage.setItem("role", data.role);

@@ -7,16 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('line-context').textContent = lineName;
 
     const form = document.getElementById('incident-form');
-    
+
     form.addEventListener('submit', async (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
 
         // Recuperamos quién está conectado
         const currentUser = localStorage.getItem("usuario_actual") || "barbe";
 
         const type = document.getElementById('type').value;
         const description = document.getElementById('description').value;
-        const assistance = document.getElementById('assistance').checked; 
+        const assistance = document.getElementById('assistance').checked;
 
         const incidentData = {
             line_name: lineName,
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const response = await fetch('http://localhost:4000/api/incidents', {
+            const response = await fetch('https://cityflow2.vercel.app/api/incidents', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

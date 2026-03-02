@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:4000/api/lines";
+const API_URL = "https://cityflow2.vercel.app/api/lines";
 const container = document.getElementById("lines-container");
 const filterSelect = document.getElementById("zone-filter");
 
@@ -6,7 +6,7 @@ const filterSelect = document.getElementById("zone-filter");
 let allLines = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
-    
+
     // Si no hay usuario, mandarlo al login
     const user = localStorage.getItem("usuario_actual");
     if (!user) {
@@ -22,16 +22,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 async function loadLines() {
     try {
         const response = await fetch(API_URL);
-        
+
         if (!response.ok) {
             throw new Error("Error al conectar con el servidor");
         }
 
         const data = await response.json();
-        
+
         // Guardamos los datos en la variable global
         allLines = data;
-        
+
         // Pintamos las cartas iniciales (todas)
         renderLines(allLines);
 
@@ -53,7 +53,7 @@ function renderLines(linesToRender) {
 
     // Recorremos cada línea y creamos su carta
     linesToRender.forEach(line => {
-        
+
         // Lógica visual para los estados
         let statusClass = "active"; // Verde por defecto
         let statusText = "Operativa";

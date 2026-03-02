@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:4000/api/users/register";
+const API_URL = "https://cityflow2.vercel.app/api/users/register";
 
 // Usamos "submit" en el formulario para que funcione también al pulsar Enter
 document.getElementById("register-form").addEventListener("submit", async (event) => {
@@ -16,7 +16,7 @@ document.getElementById("register-form").addEventListener("submit", async (event
 
 
     if (!username || !password) {
-    
+
         messageBox.textContent = "Por favor, introduce usuario y contraseña.";
         return;
     }
@@ -43,9 +43,9 @@ document.getElementById("register-form").addEventListener("submit", async (event
 
         const data = await response.json();
 
-    
+
         if (response.ok) {
-        
+
             messageBox.textContent = "✅ ¡Cuenta creada! Redirigiendo al login...";
 
             // Limpiar campos
@@ -58,24 +58,24 @@ document.getElementById("register-form").addEventListener("submit", async (event
             }, 2000);
 
         } else {
-        
+
             messageBox.textContent = data.error || "Error al registrarse";
-            
-            
+
+
             submitButton.disabled = false;
             submitButton.textContent = "Registrarse en CityFlow";
-           
+
         }
 
     } catch (error) {
-       
+
         console.error(error);
-        
+
         messageBox.textContent = "Error: No se puede conectar con el servidor.";
-        
+
         // Restaurar botón
         submitButton.disabled = false;
         submitButton.textContent = "Registrarse en CityFlow";
-     
+
     }
 });

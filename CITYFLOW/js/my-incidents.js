@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    
+
+
     const currentUser = localStorage.getItem("usuario_actual");
 
     console.log("👤 Cargando historial para:", currentUser);
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadIncidents(username) {
     try {
-        const response = await fetch(`http://localhost:4000/api/incidents/user/${username}`);
+        const response = await fetch(`https://cityflow2.vercel.app/api/incidents/user/${username}`);
         const result = await response.json();
 
         if (result.success) {
@@ -28,7 +28,7 @@ async function loadIncidents(username) {
 
 function renderTable(incidents) {
     const tbody = document.querySelector('.history-table tbody');
-    tbody.innerHTML = ''; 
+    tbody.innerHTML = '';
 
     if (incidents.length === 0) {
         tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">No tienes reportes enviados.</td></tr>';

@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:4000/api/incidents"; 
+const API_URL = "https://cityflow2.vercel.app/api/incidents";
 
 // 1. SEGURIDAD
 if (localStorage.getItem("role") !== "admin") {
@@ -26,12 +26,12 @@ async function loadIncidents() {
     try {
         const response = await fetch(API_URL);
         const incidents = await response.json();
-        
+
         document.getElementById("count-pending").textContent = incidents.filter(i => i.status === 'pending').length;
         document.getElementById("count-solved").textContent = incidents.filter(i => i.status === 'solved').length;
 
         const tbody = document.getElementById("incidents-tbody");
-        tbody.innerHTML = ""; 
+        tbody.innerHTML = "";
 
         incidents.forEach(inc => {
             // AÑADIDO: Botón de eliminar con clase 'btn-delete'
@@ -58,8 +58,8 @@ async function loadIncidents() {
                 </tr>`;
             tbody.innerHTML += row;
         });
-    } catch (error) { 
-        console.error("Error cargando admin:", error); 
+    } catch (error) {
+        console.error("Error cargando admin:", error);
     }
 }
 
@@ -67,7 +67,7 @@ async function loadIncidents() {
 async function deleteIncident(id) {
 
     const confirmDelete = confirm("⚠️ ¿Estás seguro de que quieres eliminar esta incidencia permanentemente?");
-    
+
     if (!confirmDelete) return;
 
     try {
@@ -93,17 +93,17 @@ async function deleteIncident(id) {
 async function saveStatus(event, id) {
     event.preventDefault();
     const status = document.getElementById(`select-${id}`).value;
-    
+
     try {
         await fetch(`${API_URL}/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ status })
         });
-        
+
         loadIncidents();
         alert("Estado actualizado");
-        
+
     } catch (error) {
         console.error(error);
         alert("Error al guardar");

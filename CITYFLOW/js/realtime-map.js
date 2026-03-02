@@ -1,11 +1,11 @@
 
 
 let map;
-const markers = {}; 
+const markers = {};
 
 document.addEventListener('DOMContentLoaded', () => {
     initMap();
-    loadVehicles(); 
+    loadVehicles();
     setInterval(loadVehicles, 5000); // Actualizar cada 5s
 });
 
@@ -30,7 +30,7 @@ function initMap() {
 async function loadVehicles() {
     try {
         // Asegúrate de que el puerto sea 4000
-        const response = await fetch('http://localhost:4000/api/vehicles');
+        const response = await fetch('https://cityflow2.vercel.app/api/vehicles');
         const result = await response.json();
 
         if (result.success) {
@@ -75,7 +75,7 @@ function updateMarkers(vehicles) {
             const newMarker = L.marker([bus.location.lat, bus.location.lng], { icon: busIcon })
                 .addTo(map)
                 .bindPopup(popupContent);
-            
+
             markers[bus.code] = newMarker;
         }
     });
