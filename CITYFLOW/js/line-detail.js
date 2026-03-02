@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function fetchLineData(id) {
     try {
-        const response = await fetch(`https://cityflow2.vercel.app/api/lines/${id}`);
+        const response = await fetch(`https://api-cityflow.onrender.com/api/lines/${id}`);
         const result = await response.json();
 
         if (result.success) {

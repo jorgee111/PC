@@ -1,4 +1,4 @@
-const API_URL = "https://cityflow2.vercel.app/api/incidents";
+const API_URL = "https://api-cityflow.onrender.com/api/incidents";
 
 // 1. SEGURIDAD
 if (localStorage.getItem("role") !== "admin") {

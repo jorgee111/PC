@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadIncidents(username) {
     try {
-        const response = await fetch(`https://cityflow2.vercel.app/api/incidents/user/${username}`);
+        const response = await fetch(`https://api-cityflow.onrender.com/api/incidents/user/${username}`);
         const result = await response.json();
 
         if (result.success) {

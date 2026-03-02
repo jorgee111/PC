@@ -30,7 +30,7 @@ function initMap() {
 async function loadVehicles() {
     try {
         // Asegúrate de que el puerto sea 4000
-        const response = await fetch('https://cityflow2.vercel.app/api/vehicles');
+        const response = await fetch('https://api-cityflow.onrender.com/api/vehicles');
         const result = await response.json();
 
         if (result.success) {

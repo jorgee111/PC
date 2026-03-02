@@ -1,4 +1,4 @@
-const API_URL = "https://cityflow2.vercel.app/api/lines";
+const API_URL = "https://api-cityflow.onrender.com/api/lines";
 const container = document.getElementById("lines-container");
 const filterSelect = document.getElementById("zone-filter");
 
