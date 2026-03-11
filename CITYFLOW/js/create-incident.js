@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const response = await fetch('https://api-cityflow.onrender.com/api/incidents', {
+            const response = await fetch('https://cityflow-enfxcabadcgnaad7.francecentral-01.azurewebsites.net/api/incidents', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // 3. Llamar a la API Python (Asegúrate que uvicorn corre en el 8000)
-            const response = await fetch('https://cityflow2.vercel.app/predict', {
+            const response = await fetch('https://cityflow-enfxcabadcgnaad7.francecentral-01.azurewebsites.net/predict', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(datos)

@@ -1,4 +1,4 @@
-const API_URL = "https://api-cityflow.onrender.com/api/users";
+const API_URL = "https://cityflow-enfxcabadcgnaad7.francecentral-01.azurewebsites.net/api/users";
 
 // Escuchamos el evento 'submit' del formulario, no el click del botón
 document.getElementById("login-form").addEventListener("submit", async (event) => {

@@ -1,4 +1,4 @@
-const API_URL = "https://api-cityflow.onrender.com/api/incidents";
+const API_URL = "https://cityflow-enfxcabadcgnaad7.francecentral-01.azurewebsites.net/api/incidents";
 
 // 1. SEGURIDAD
 if (localStorage.getItem("role") !== "admin") {

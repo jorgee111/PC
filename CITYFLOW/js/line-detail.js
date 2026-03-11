@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function fetchLineData(id) {
     try {
-        const response = await fetch(`https://api-cityflow.onrender.com/api/lines/${id}`);
+        const response = await fetch(`https://cityflow-enfxcabadcgnaad7.francecentral-01.azurewebsites.net/api/lines/${id}`);
         const result = await response.json();
 
         if (result.success) {

@@ -1,4 +1,4 @@
-const API_URL = "https://api-cityflow.onrender.com/api/users/register";
+const API_URL = "https://cityflow-enfxcabadcgnaad7.francecentral-01.azurewebsites.net/api/users/register";
 
 // Usamos "submit" en el formulario para que funcione también al pulsar Enter
 document.getElementById("register-form").addEventListener("submit", async (event) => {
