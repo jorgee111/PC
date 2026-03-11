@@ -45,6 +45,6 @@ app.use((req, res, next) => {
     res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
-app.listen(PORT, () => {
-    console.log(`Servidor CityFlow corriendo en http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Servidor CityFlow corriendo en el puerto ${PORT}`);
 });
