@@ -6,49 +6,33 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: 'cityflow'
-  NODE_VERSION: '20.x'
-
-permissions:
-  contents: read
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./api-cityflow   # ← ¡AQUÍ ESTÁ LA CLAVE!
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up Node.js
+    - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: ${{ env.NODE_VERSION }}
-        # SIN CACHE → SOLUCIONA EL ERROR
+        node-version: '20.x'
 
-    - name: Debug files
+    - name: Debug - Confirm files
       run: |
+        pwd
         ls -la
         ls -la app.js package.json
 
-    - name: npm install
+    - name: Install dependencies
       run: npm install
-
-    - name: Upload artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: node-api
-        path: .
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-    - name: Download artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: node-api
 
     - name: Deploy to Azure
       uses: azure/webapps-deploy@v3
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
-        package: .
+        package: ./api-cityflow
