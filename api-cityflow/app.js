@@ -29,14 +29,15 @@ app.use('/api/incidents', incidentsRoutes); // Ruta para la tabla del admin
 app.use('/api/vehicles', vehiclesRoutes);
 
 // Servir la carpeta de frontend (CITYFLOW)
-app.use(express.static(path.join(__dirname, '../CITYFLOW')));
+const frontendPath = path.join(process.cwd(), 'CITYFLOW');
+app.use(express.static(frontendPath));
 
 // Cualquier otra ruta que no sea de API, devuelve el index.html del frontend
 app.use((req, res, next) => {
     if (req.path.startsWith('/api')) {
         return next();
     }
-    res.sendFile(path.join(__dirname, '../CITYFLOW/index.html'));
+    res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
 app.listen(PORT, () => {
