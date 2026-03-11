@@ -28,8 +28,13 @@ app.use('/api/lines', linesRoutes);
 app.use('/api/incidents', incidentsRoutes); // Ruta para la tabla del admin
 app.use('/api/vehicles', vehiclesRoutes);
 
-// Servir la carpeta de frontend (CITYFLOW)
-const frontendPath = path.join(process.cwd(), 'CITYFLOW');
+// Servir la carpeta de frontend (CITYFLOW). En Azure, el app.js podría estar ejecutándose desde diferentes niveles de directorio.
+// Resolvemos la ruta correcta usando __dirname (que para 'fileURLToPath(import.meta.url)' en /api-cityflow será ese directorio o la raíz en Azure)
+// Si app.js está en la raíz en Azure, CITYFLOW estará junto a él. Si está en api-cityflow, estará un nivel arriba.
+const possiblePath1 = path.join(__dirname, 'CITYFLOW');
+const possiblePath2 = path.join(__dirname, '../CITYFLOW');
+const frontendPath = require('fs').existsSync(possiblePath1) ? possiblePath1 : possiblePath2;
+
 app.use(express.static(frontendPath));
 
 // Cualquier otra ruta que no sea de API, devuelve el index.html del frontend
